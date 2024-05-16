@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Ives van Hoorne",
+  "license": "MIT",
+  "dependencies": {
+    "@analog-labs/timegraph-js": "^0.1.1",
+    "@analog-labs/timegraph-wasm": "^1.0.0",
+    "@polkadot/keyring": "^12.6.2",
+    "@polkadot/util": "^12.6.2",
+    "@polkadot/wasm-crypto": "^7.3.2",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5"
+  }
+}
