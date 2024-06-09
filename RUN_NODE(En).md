@@ -46,7 +46,7 @@ sudo apt install docker-ce
 # Download the node image
 docker pull analoglabs/timechain
 # Run the node
-docker run -d -p 9944:9944 -p 30303:30303 analoglabs/timechain --base-path /data --rpc-external  --unsafe-rpc-external --rpc-methods=unsafe --name=MyNode
+docker run -d -p 9944:9944 -p 30303:30303 analoglabs/timechain --base-path /data --rpc-external  --unsafe-rpc-external --rpc-methods=unsafe --name=MyNode --telemetry-url "wss://telemetry.analog.one/submit 0"
 ```
 
 #### 2.3 Check the Node
