@@ -29,7 +29,6 @@ import { TimegraphClient } from "@analog-labs/timegraph-js";
 import { web3Enable } from "@polkadot/extension-dapp";
 
 const sessionKey = process.env.REACT_APP_SESSION_KEY;
-
 const timegraphGraphqlUrl = "https://timegraph.testnet.analog.one/graphql";
 
 async function watchSDKTesting(setData) {
@@ -37,25 +36,32 @@ async function watchSDKTesting(setData) {
 
   const client = new TimegraphClient({
     url: timegraphGraphqlUrl,
-    sessionKey: sessionKey, 
+    sessionKey: sessionKey,
   });
+  let datas = []
 
-  
-  const data = await client.view.data({
-    _name: "name", 
-    hashId: "hashId", 
-    fields: ["_index"],
-    limit: 10,
-  });
+  let aliasResponse = await client.alias.add({
+        name: "name",
+        hashId: "hashId",
+        identifier: "name",
+      });
+      console.log(aliasResponse);
+      datas = [...datas, ...aliasResponse];
+      let response = await client.view.data({
+          hashId: "hashId",
+          _name: "name",
+          fields: ["_index"],
+          limit: "3",
+      });
+      console.log(response);
+      datas = [...datas, ...response];
 
-  setData(data);
+  setData(datas);
 }
 
 function App() {
-  
   const [data, setData] = useState(null);
 
-  
   useEffect(() => {
     watchSDKTesting(setData);
   }, []);

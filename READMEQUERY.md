@@ -30,15 +30,25 @@ async function watchSDKTesting(setData) {
     url: timegraphGraphqlUrl,
     sessionKey: sessionKey,
   });
+  let datas = []
 
-  const data = await client.view.data({
-    _name: "name",
-    hashId: "hashId",
-    fields: ["_index"],
-    limit: 10,
-  });
+  let aliasResponse = await client.alias.add({
+        name: "name",
+        hashId: "hashId",
+        identifier: "name",
+      });
+      console.log(aliasResponse);
+      datas = [...datas, ...aliasResponse];
+      let response = await client.view.data({
+          hashId: "hashId",
+          _name: "name",
+          fields: ["_index"],
+          limit: "3",
+      });
+      console.log(response);
+      datas = [...datas, ...response];
 
-  setData(data);
+  setData(datas);
 }
 
 function App() {
