@@ -91,3 +91,5 @@ npm start
 
 Thường nó sẽ tạo app ở địa chỉ `http://localhost:3000`
 ae chỉ cần mở browser và nhập địa chỉ  `http://localhost:3000` là nó sẽ chạy query cho ae 
+
+Ae nhập name và hashId rồi submit là xong
